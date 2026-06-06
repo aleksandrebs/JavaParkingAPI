@@ -1,6 +1,6 @@
-package org.ibgradecalc.ui;
+package org.parkingapi.ui;
 
-import org.ibgradecalc.service.ParkingService;
+import org.parkingapi.service.ParkingService;
 
 import java.util.Scanner;
 

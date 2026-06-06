@@ -1,7 +1,7 @@
-package org.ibgradecalc.service;
+package org.parkingapi.service;
 
-import org.ibgradecalc.model.ParkingSpot;
-import org.ibgradecalc.model.Reservation;
+import org.parkingapi.model.ParkingSpot;
+import org.parkingapi.model.Reservation;
 
 import java.time.LocalDateTime;
 import java.util.Map;

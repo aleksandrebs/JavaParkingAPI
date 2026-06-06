@@ -1,4 +1,4 @@
-package org.ibgradecalc.model;
+package org.parkingapi.model;
 
 import java.time.LocalDateTime;
 
