@@ -24,7 +24,7 @@ public class ParkingService {
 
     }
 
-    public void addReservation(Reservation reservation, int spotID, LocalDateTime startDate, LocalDateTime endDate){
+    public void addReservation(int spotID, LocalDateTime startDate, LocalDateTime endDate){
 
         ParkingSpot currSpot = slots.get(spotID);
         List<Reservation> reservations = currSpot.getReservations();
@@ -39,10 +39,11 @@ public class ParkingService {
                 if((reservations.get(i).isOverlapping(startDate, endDate))){
                     isOverlapping = true;
                 }
-                if(!isOverlapping){
-                    Reservation newReservation = new Reservation(spotID,startDate,endDate);
-                    currSpot.addReservation(newReservation);
-                }
+
+            }
+            if(!isOverlapping){
+                Reservation newReservation = new Reservation(spotID,startDate,endDate);
+                currSpot.addReservation(newReservation);
             }
         }
     }
