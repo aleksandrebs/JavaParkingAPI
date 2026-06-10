@@ -29,13 +29,19 @@ public class ParkingService {
         ParkingSpot currSpot = slots.get(spotID);
         List<Reservation> reservations = currSpot.getReservations();
 
+        Boolean isOverlapping = false;
+
         if(currSpot.getReservations().isEmpty()){
-            reservation = new Reservation(spotID,startDate,endDate);
-            currSpot.addReservation(reservation);
+            Reservation newReservation = new Reservation(spotID,startDate,endDate);
+            currSpot.addReservation(newReservation);
         }else{
             for(int i = 0; i < currSpot.getReservations().size(); i++){
-                if(!(reservations.get(i).isOverlapping(startDate, endDate))){
-                    currSpot.addReservation(reservation);
+                if((reservations.get(i).isOverlapping(startDate, endDate))){
+                    isOverlapping = true;
+                }
+                if(!isOverlapping){
+                    Reservation newReservation = new Reservation(spotID,startDate,endDate);
+                    currSpot.addReservation(newReservation);
                 }
             }
         }
