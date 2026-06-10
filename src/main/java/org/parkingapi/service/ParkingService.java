@@ -4,6 +4,7 @@ import org.parkingapi.model.ParkingSpot;
 import org.parkingapi.model.Reservation;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -21,6 +22,23 @@ public class ParkingService {
 
         reservation = new Reservation(spotID,startDate,endDate);
 
+    }
+
+    public void addReservation(Reservation reservation, int spotID, LocalDateTime startDate, LocalDateTime endDate){
+
+        ParkingSpot currSpot = slots.get(spotID);
+        List<Reservation> reservations = currSpot.getReservations();
+
+        if(currSpot.getReservations().isEmpty()){
+            reservation = new Reservation(spotID,startDate,endDate);
+            currSpot.addReservation(reservation);
+        }else{
+            for(int i = 0; i < currSpot.getReservations().size(); i++){
+                if(!(reservations.get(i).isOverlapping(startDate, endDate))){
+                    currSpot.addReservation(reservation);
+                }
+            }
+        }
     }
 
     public Map<Integer, ParkingSpot> getSlots(){

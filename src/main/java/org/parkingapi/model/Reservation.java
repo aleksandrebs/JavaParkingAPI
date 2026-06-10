@@ -1,5 +1,6 @@
 package org.parkingapi.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Reservation {
@@ -28,5 +29,9 @@ public class Reservation {
     }
     public int getSpotID() {
         return spotID;
+    }
+
+    public Boolean isOverlapping(LocalDateTime newStart, LocalDateTime newEnd){
+        return this.startDate.isBefore(newEnd) && this.endDate.isAfter(newStart);
     }
 }

@@ -15,6 +15,8 @@ public class Main {
         ParkingService parkingService = new ParkingService(totalSlots);
         System.out.println("You have successfully created a Parking Service with " + totalSlots + " parking slots.");
         System.out.println(parkingService.getSlots());
+        System.out.println("Please select which spot to reserve: ");
+        int currResSpot = input.nextInt();
 
         input.close();
 
